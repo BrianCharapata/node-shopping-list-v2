@@ -51,6 +51,10 @@ app.post('/shopping-list', jsonParser, (req, res) => {
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
 })
+app.post('/recipes', jsonParser, (req, res) => {
+  const item = Recipes.create(req.body.name, req.body.ingredients);
+  res.json(item);
+})
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
